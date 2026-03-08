@@ -108,7 +108,7 @@ runs:
         echo "Filtering to include only ${{ inputs.coverage-include-pattern }} directory..."
         COVERAGE_FILE=${{ inputs.binary }}-filtered.info
         lcov --extract ${{ inputs.binary }}-all.info "*/${{ inputs.coverage-include-pattern }}/*" --output-file ${COVERAGE_FILE} > /dev/null
-        lcov --remove ${COVERAGE_FILE} "*/_deps/*" --output-file ${COVERAGE_FILE} > /dev/null
+        lcov --remove ${COVERAGE_FILE} "*/_deps/*" --output-file ${COVERAGE_FILE} --ignore-errors unused > /dev/null
 
         echo "=================================================="
         lcov --summary ${COVERAGE_FILE}
