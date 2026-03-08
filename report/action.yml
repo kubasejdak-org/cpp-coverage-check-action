@@ -109,8 +109,7 @@ runs:
           --output-directory html \
           --title "${{ github.event.repository.name }} code coverage" \
           --legend \
-          --show-details \
-          --ignore-errors source
+          --show-details
 
     - name: Upload coverage report
       uses: actions/upload-artifact@v6
