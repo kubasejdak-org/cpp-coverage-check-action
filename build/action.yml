@@ -55,7 +55,7 @@ runs:
 
         echo "artifact-name=coverage-build-${{ inputs.preset }}" >> $GITHUB_OUTPUT
 
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v7
       with:
         name: ${{ steps.collect.outputs.artifact-name }}
         path: coverage-artifacts/
