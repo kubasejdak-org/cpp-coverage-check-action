@@ -97,10 +97,10 @@ runs:
         cd test-${{ inputs.binary }}
 
         echo "Generating coverage baseline (all compiled files at 0%)..."
-        lcov --capture --initial --directory . --output-file ${{ inputs.binary }}-baseline.info --gcov-tool gcov --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1 --ignore-errors source
+        lcov --capture --initial --directory . --output-file ${{ inputs.binary }}-baseline.info --gcov-tool gcov --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1 --ignore-errors source,mismatch
 
         echo "Generating coverage info with lcov..."
-        lcov --capture --directory . --output-file ${{ inputs.binary }}-coverage.info --gcov-tool gcov --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1 --ignore-errors source
+        lcov --capture --directory . --output-file ${{ inputs.binary }}-coverage.info --gcov-tool gcov --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1 --ignore-errors source,mismatch
 
         echo "Merging baseline and coverage data..."
         lcov --add-tracefile ${{ inputs.binary }}-baseline.info --add-tracefile ${{ inputs.binary }}-coverage.info --output-file ${{ inputs.binary }}-all.info
